@@ -9,6 +9,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
   # CachyOS Kernel
+  # sudo nixos-rebuild switch --impure --flake .  --option 'extra-substituters' 'https://chaotic-nyx.cachix.org/' --option extra-trusted-public-keys "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   services.scx.enable = true;
 
@@ -16,7 +17,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -95,6 +95,8 @@
     neovim
 
     tealdeer
+
+    pciutils
   ];
 
   programs.firefox.enable = true;
