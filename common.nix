@@ -18,7 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.networkmanager.enable = true;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 
   time.timeZone = "Europe/London";
@@ -71,9 +71,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ghostnade = {
+  users.users.biscotti = {
     isNormalUser = true;
-    description = "ghostnade";
+    description = "biscotti";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
@@ -84,19 +84,28 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Essentials
     wget
     git
 
+    # Desktop Enviroment
+    waybar
     fuzzel
     swaylock
 
+    # Terminal
     ghostty
     fastfetch
     neovim
 
     tealdeer
 
-    pciutils
+    # Gaming
+    mangohud
+    protonup-qt
+    lutris
+    bottles
+    heroic
   ];
 
   programs.firefox.enable = true;
@@ -110,6 +119,11 @@
       };
     };
   };
+
+  # Gaming
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
