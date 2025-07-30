@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 let
   username = "biscotti";
@@ -6,6 +6,7 @@ let
   dotfilesDir = "${homeDir}/.dotfiles";
   symlink = config.lib.file.mkOutOfStoreSymlink;
 in
+
 {
   home.username = username;
   home.homeDirectory = homeDir;
@@ -19,23 +20,24 @@ in
     };
   };
 
-  programs.neovim = {
-    enable = true;
-#     extraPackages = [
-#       pkgs.ripgrep
-#       pkgs.lazygit
-#       pkgs.gcc
-#       pkgs.gnumake
-#       pkgs.nodejs_latest
-#       pkgs.lua-language-server
-#       pkgs.nixd
-#     ];
-
-#     plugins = with pkgs.vimPlugins; [
-#       lazy-nvim
-#    ];
-  };
-
+#   programs.neovim = {
+# #     enable = true;
+# # #     extraPackages = [
+# # #       pkgs.ripgrep
+# # #       pkgs.lazygit
+# # #       pkgs.gcc
+# # #       pkgs.gnumake
+# # #       pkgs.nodejs_latest
+# # #       pkgs.lua-language-server
+# # #       pkgs.nixd
+# # #     ];
+# #
+# #     plugins = with pkgs.vimPlugins; [
+# #       lazy-nvim
+# #    ];
+#   };
 
 #   home.file.".config/nvim".source = symlink "${dotfilesDir}/.config/nvim";
+  xdg.configFile."nvim".source = symlink "${dotfilesDir}/.config/nvim";
+  xdg.configFile."nvim".recursive = true;
 }

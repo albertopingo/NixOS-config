@@ -1,19 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-in
 {
   imports =
     [
       /etc/nixos/hardware-configuration.nix
-      (import "${home-manager}/nixos")
     ];
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-  home-manager.backupFileExtension = "backup";
-  home-manager.users.biscotti = import ./home.nix;
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
@@ -105,7 +96,7 @@ in
     # Terminal
     ghostty
     fastfetch
-    #neovim
+#     neovim
 
     tealdeer
 
@@ -116,6 +107,8 @@ in
     bottles
     heroic
   ];
+
+
 
   programs.firefox.enable = true;
 
