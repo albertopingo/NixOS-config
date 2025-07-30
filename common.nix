@@ -20,7 +20,6 @@
   networking.networkmanager.enable = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
@@ -96,10 +95,10 @@
     # Terminal
     ghostty
     fastfetch
-#     neovim
 
     tealdeer
-
+    vscode
+    
     # Gaming
     mangohud
     protonup-qt
@@ -107,8 +106,6 @@
     bottles
     heroic
   ];
-
-
 
   programs.firefox.enable = true;
 
@@ -153,5 +150,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }

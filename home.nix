@@ -15,27 +15,10 @@ in
   programs.bash = {
     enable = true;
     shellAliases = {
-      nrsl = "sudo nixos-rebuild switch --impure --flake .#laptop";
-      nrsd = "sudo nixos-rebuild switch --impure --flake .#laptop";
+      nrsl = "sudo nixos-rebuild switch --impure --flake ${homeDir}/nixos-config/.#laptop";
+      nrsd = "sudo nixos-rebuild switch --impure --flake ${homeDir}/nixos-config/.#desktop";
     };
   };
-
-#   programs.neovim = {
-# #     enable = true;
-# # #     extraPackages = [
-# # #       pkgs.ripgrep
-# # #       pkgs.lazygit
-# # #       pkgs.gcc
-# # #       pkgs.gnumake
-# # #       pkgs.nodejs_latest
-# # #       pkgs.lua-language-server
-# # #       pkgs.nixd
-# # #     ];
-# #
-# #     plugins = with pkgs.vimPlugins; [
-# #       lazy-nvim
-# #    ];
-#   };
 
   programs.neovim = {
       enable = true;

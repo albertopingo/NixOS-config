@@ -12,5 +12,4 @@
     open = false; # Not supported by my GPU
   };
 
-
 }
