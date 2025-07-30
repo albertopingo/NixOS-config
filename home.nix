@@ -37,6 +37,11 @@ in
 # #    ];
 #   };
 
+  programs.neovim = {
+      enable = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  };
+
 #   home.file.".config/nvim".source = symlink "${dotfilesDir}/.config/nvim";
   xdg.configFile."nvim".source = symlink "${dotfilesDir}/.config/nvim";
   xdg.configFile."nvim".recursive = true;

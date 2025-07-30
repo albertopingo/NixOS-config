@@ -1,6 +1,6 @@
 {
 
-  description = "A very basic flake";
+  description = "My flake";
 
   inputs = {
     # Unstable NixPkgs
@@ -10,9 +10,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # Chaotic's Nyx CachyOS Kernel
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # Neovim Nightly
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, chaotic, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, chaotic, neovim-nightly-overlay, ... }: {
 
     nixosConfigurations = {
 
@@ -29,9 +31,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.biscotti = ./home.nix;
             home-manager.backupFileExtension = "backup";
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
+            home-manager.extraSpecialArgs = { inherit inputs;};
           }
 
           chaotic.nixosModules.default
@@ -51,12 +51,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.biscotti = ./home.nix;
             home-manager.backupFileExtension = "backup";
-
             home-manager.extraSpecialArgs = { inherit inputs;};
-
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
 
           chaotic.nixosModules.default
